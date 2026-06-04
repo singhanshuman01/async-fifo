@@ -1,7 +1,7 @@
 module memory (
     output [7:0] read_data,
     input [7:0] write_data,
-    input read_addr, write_addr,
+    input [3:0] read_addr, write_addr,
     input clk, en, full 
 );
 
