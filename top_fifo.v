@@ -11,7 +11,7 @@ wire [4:0] nxt_wptr_gray, nxt_rptr_gray;
 wire [3:0] waddr, raddr;
 wire [4:0] sync_nxt_wptr_gray, sync_nxt_rptr_gray;
 
-memory mem1(
+memory mem_inst(
     .read_data(r_data),
     .write_data(w_data),
     .read_addr(raddr),
@@ -21,21 +21,21 @@ memory mem1(
     .full(full)
 );
 
-sync_wptr uut1(
+sync_wptr sync_wptr_inst(
     .sync_write_ptr(sync_nxt_wptr_gray),
     .wptr(nxt_wptr_gray),
     .rclk(rclk),
     .rrst_n(rrst_n)
 );
 
-sync_rptr uut2 (
+sync_rptr sync_rptr_inst (
     .sync_read_ptr(sync_nxt_rptr_gray),
     .rptr(nxt_rptr_gray),
     .write_clk(wclk),
     .wrst_n(wrst_n)
 );
 
-handler_rptr uut3 (
+handler_rptr handler_rptr_inst (
     .read_addr(raddr),
     .rptr(nxt_rptr_gray),
     .empty(empty),
@@ -45,7 +45,7 @@ handler_rptr uut3 (
     .arst_n(rrst_n)
 );
 
-handler_wptr uut4 (
+handler_wptr handler_wptr_inst (
     .write_addr(waddr),
     .write_ptr(nxt_wptr_gray),
     .full(full),
