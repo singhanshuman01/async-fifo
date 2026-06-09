@@ -1,16 +1,21 @@
 module memory (
-    output [7:0] read_data,
+    output reg [7:0] read_data,
     input [7:0] write_data,
     input [3:0] read_addr, write_addr,
-    input clk, en, full 
+    input rclk, ren, empty,
+    input wclk, wen, full 
 );
 
 reg [7:0] mem [0:15];
 
-assign read_data = mem[read_addr];
+// assign read_data = mem[read_addr];
 
-always @(posedge clk) begin
-    if (en && !full) mem[write_addr] <= write_data;
+always @(posedge rclk ) begin
+    if(ren && !empty) read_data <= mem[read_addr];
+end
+
+always @(posedge wclk) begin
+    if (wen && !full) mem[write_addr] <= write_data;
 end
 
 endmodule

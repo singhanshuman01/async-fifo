@@ -16,8 +16,11 @@ memory mem_inst(
     .write_data(w_data),
     .read_addr(raddr),
     .write_addr(waddr),
-    .clk(wclk),
-    .en(write_en),
+    .rclk(rclk),
+    .ren(read_en),
+    .empty(empty),
+    .wclk(wclk),
+    .wen(write_en),
     .full(full)
 );
 
