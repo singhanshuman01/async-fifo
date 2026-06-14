@@ -17,7 +17,7 @@ end
 
 assign write_addr = local_write_addr[3:0];
 
-assign next_write_addr_bin = local_write_addr + (en && !full);
+    assign next_write_addr_bin = local_write_addr + (en & ~full);
 assign next_write_addr_gray = next_write_addr_bin ^ (next_write_addr_bin>>1);
 
 assign full_w = (next_write_addr_gray == {~sync_gray_rptr[4:3], sync_gray_rptr[2:0]});
