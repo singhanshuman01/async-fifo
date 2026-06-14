@@ -2,3 +2,4 @@ Docs/
 .directory
 output_files/
 tb_*
+testbench/
